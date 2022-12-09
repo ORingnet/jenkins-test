@@ -52,3 +52,8 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          
+      - name: curl jenkins
+        uses: wei/curl@master
+        with:
+          args: -k https://jenkins.211.75.8.117.nip.io/job/deploy-ems-deployer-client/build?token=ems-qa
