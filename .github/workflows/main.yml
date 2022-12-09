@@ -53,7 +53,10 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           
-      - name: curl jenkins
-        uses: wei/curl@master
+      - name: trigger jenkins job
+        uses: appleboy/jenkins-action@master
         with:
-          args: -k https://jenkins.211.75.8.117.nip.io/job/deploy-ems-deployer-client/build?token=ems-qa
+          url: "https://jenkins.211.75.8.117.nip.io"
+          user: "git"
+          token: ${{ secrets.JENKINS_TOKEN }}
+          job: "deploy-ems-deployer-client"
